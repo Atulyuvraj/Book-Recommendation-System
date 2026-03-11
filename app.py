@@ -44,17 +44,17 @@ def find():
         data = []
         for i in similar_items:
             item = []
-            # Use 'book' (the original dataframe) to fetch details
+           
             temp_df = book[book['Book-Title'] == pt.index[i[0]]]
             
-            # Extracting unique values for the response
+            
             item.extend(list(temp_df.drop_duplicates("Book-Title")["Book-Title"].values))
             item.extend(list(temp_df.drop_duplicates("Book-Title")["Book-Author"].values))
             item.extend(list(temp_df.drop_duplicates("Book-Title")["Image-URL-M"].values))
             
             data.append(item)
             
-        # 4. Pass 'data' to your results page (fixed syntax)
+        
         return render_template("rec.html", data=data)
     
      
